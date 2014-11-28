@@ -1,0 +1,9 @@
+def run(file, inputs)
+  IO.popen("ruby #{file}", 'r+') do |pipe|
+    inputs.each do |input|
+      pipe.puts(input)
+    end
+    pipe.close_write
+    return  pipe.read.split("\n")
+  end
+end
